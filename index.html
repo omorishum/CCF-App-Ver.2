@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCF測定アプリ</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.0/dist/chartjs-plugin-annotation.min.js"></script>
+</head>
+<body>
+
+  <h1>CCF測定アプリVer.2</h1>
+
+  <div class="timer-display">
+    <div id="time_cpr">CPR: 00:00.0</div>
+    <div id="time_cc">圧迫: 00:00.0</div>
+    <div id="rate">圧迫率: 0%</div>
+  </div>
+
+  <div class="button-group">
+    <button id="button-reset">リセット</button>
+    <button id="button-cc" class="btn-start">胸骨圧迫 開始/停止</button>
+    <button id="button-cpr">傷病者接触</button>
+  </div>
+
+  <h2>処置ログ</h2>
+  <div class="button-grid">
+    <button onclick="addLog('SOL確認')">SOL確認</button>
+    <button onclick="addLog('質の評価')">質の評価</button>
+    <button onclick="addLog('人工呼吸')">人工呼吸</button>
+    <button onclick="addLog('除細動')">除細動</button>
+    <button onclick="addLog('指示要請')">指示要請</button>
+    <button onclick="addLog('IV確保')">IV確保</button>
+    <button onclick="addLog('アドレナリン投与')">アドレナリン投与</button>
+    <button onclick="addLog('気道確保')">気道確保</button>
+    <button onclick="addLog('隊員の交代')">隊員の交代</button>
+    <button onclick="addLog('自動心マ装着')">自動心マ装着</button>
+    <button onclick="addLog('支援隊到着')">支援隊到着</button>
+    <button onclick="addLog('搬出開始')">搬出開始</button>
+  </div>
+
+  <div class="custom-log">
+    <input type="text" id="customLogInput" placeholder="自由記入...">
+    <button onclick="addCustomLog()">記録</button>
+  </div>
+
+  <h2>CCF 推移グラフ</h2>
+  <div class="chart-wrapper">
+    <canvas id="ccfChart"></canvas>
+  </div>
+
+  <h2>ログ</h2>
+  <button id="button-download-csv">CSVダウンロード</button> 
+  <div id="log_interruption"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
